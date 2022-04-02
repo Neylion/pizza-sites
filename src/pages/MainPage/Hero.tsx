@@ -1,10 +1,14 @@
-type SetSearchQueryCallback = (searchQuery: string) => void;
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faClose } from '@fortawesome/free-solid-svg-icons';
+import { useRef } from 'react';
+type SetSearchQueryCallback = (searchQuery: string | null) => void;
 
 interface HeroProps {
   setSearchQuery: SetSearchQueryCallback;
   searchEnabled: boolean;
+  searchQuery: string | null;
 }
-const Hero = ({ setSearchQuery, searchEnabled }: HeroProps) => {
+const Hero = ({ setSearchQuery, searchEnabled, searchQuery }: HeroProps) => {
   return (
     <div className="min-h-[30%] flex flex-col bg-pizza-hero bg-cover">
       <div className="flex-1 flex flex-col items-center justify-center h-full w-full bg-black/[.5]">
@@ -13,7 +17,7 @@ const Hero = ({ setSearchQuery, searchEnabled }: HeroProps) => {
             Zaza's Pizzeria
           </span>
           <div className="w-10/12 md:w-8/12">
-            <Search setSearchQuery={setSearchQuery} searchEnabled={searchEnabled}/>
+            <Search setSearchQuery={setSearchQuery} searchEnabled={searchEnabled} searchQuery={searchQuery}/>
           </div>
           <span className="text-white my-2 md:my-4 text-l md:text-xl">
             Tel: 08-749 05 26
@@ -27,15 +31,36 @@ const Hero = ({ setSearchQuery, searchEnabled }: HeroProps) => {
 interface SearchProps {
   setSearchQuery: SetSearchQueryCallback;
   searchEnabled: boolean;
+  searchQuery: string | null;
 }
-const Search = ({ setSearchQuery, searchEnabled }: SearchProps) => {
+const Search = ({ setSearchQuery, searchEnabled, searchQuery }: SearchProps) => {
+  const ref = useRef<HTMLInputElement>(null);
+
+  const handleSearchClear = () => {
+    setSearchQuery(null);
+    if (!ref?.current) return;
+    ref?.current?.focus();
+  };
+
   return (
-    <input 
-      className={'bg-secondary-100 w-full h-full rounded-2xl items-center text-black md:text-2xl p-2 md:p-4'}
-      style={{ opacity: searchEnabled ? '95' : '0' }}
-      placeholder='Search...'
-      onChange={(e) => setSearchQuery(e.target.value)}
-    />
+    <div
+      className={'flex bg-secondary-100 w-full h-full rounded-md md:rounded-2xl items-center text-black md:text-2xl transition-opacity'}
+      style={{ 
+        opacity: searchEnabled ? '0.9' : '0',
+      }}
+    >
+      <FontAwesomeIcon icon={faSearch} className="mx-2 md:mx-4 text-main-700"/>
+      <input 
+        ref={ref}
+        className="flex-1 outline-none bg-transparent text-main-800 placeholder-main-400 py-2 md:py-4"
+        type="text"
+        value={searchQuery || ''}
+        disabled={!searchEnabled}
+        placeholder='Search...'
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      <FontAwesomeIcon icon={faClose} className="mx-2 md:mx-6 text-main-700" onClick={handleSearchClear}/>
+    </div>
   );
 };
 

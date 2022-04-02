@@ -11,7 +11,7 @@ const MainPage = () => {
   const [activeTab, setActiveTab] = useState(tabs.menu);
   return (
     <div className="flex flex-col h-full w-full bg-main-800 overflow-scroll">
-      <Hero setSearchQuery={setSearchQuery} searchEnabled={activeTab.searchEnabled} />
+      <Hero setSearchQuery={setSearchQuery} searchQuery={searchQuery} searchEnabled={activeTab.searchEnabled} />
       <div className="flex relative justify-center">
         <div className="absolute bottom-0 mx-auto flex gap-1">
           {Object.values(tabs).map((tab, index) => {
