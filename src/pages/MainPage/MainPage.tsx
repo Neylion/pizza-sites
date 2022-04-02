@@ -3,6 +3,7 @@ import Pizzas from '../../components/Pizza/Pizzas';
 import { tabs, ITab } from '../../utils/constants';
 import AboutPage from '../About/AboutPage';
 import CartPage from '../Cart/CartPage';
+import MapPage from '../Map/MapPage';
 import Hero from './Hero';
 
 const MainPage = () => {
@@ -56,7 +57,7 @@ const ActiveTab = ({ tab, searchQuery }: ActiveTabProps) => {
     case tabs.about.id:
       return <AboutPage />;
     case tabs.map.id:
-      return <div className="flex flex-col text-white justify-center text-center my-2">Hello map</div>;
+      return <MapPage />;
     case tabs.cart.id: 
       return <CartPage />;
     case tabs.menu.id: 

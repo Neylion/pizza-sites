@@ -22,5 +22,9 @@
     "array-bracket-spacing": ["error", "never"],
     "object-curly-spacing": ["error", "always", { "objectsInObjects": true }],
     "prefer-template": "error"
+  },
+  "globals": {
+    "google": "readonly",
+    "JSX": "readonly"
   }
 }
