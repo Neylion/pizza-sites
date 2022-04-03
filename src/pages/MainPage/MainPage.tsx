@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Pizzas from '../../components/Pizza/Pizzas';
+import { useCartContext } from '../../contexts/CartContext';
 import { tabs, ITab } from '../../utils/constants';
 import AboutPage from '../About/AboutPage';
 import CartPage from '../Cart/CartPage';
@@ -25,8 +26,9 @@ interface NavBarProps {
   setActiveTab: (tab: ITab) => void
 }
 const NavBar = ({ activeTab, setActiveTab }: NavBarProps) => {
+  const { cart } = useCartContext();
   return (
-    <div className="flex relative justify-center border-b-2">
+    <div className="flex relative justify-center border-b-4 border-secondary-100">
       <div className="absolute bottom-0 mx-auto flex gap-1">
         {Object.values(tabs).map((tab, index) => {
           return (
@@ -34,6 +36,7 @@ const NavBar = ({ activeTab, setActiveTab }: NavBarProps) => {
               key={index}
               active={tab.id === activeTab.id}
               onClick={() => setActiveTab(tab)}
+              notificationNum={(tab.id === tabs.cart.id && cart.totalCount) || null}
             >
               {tab.label}
             </ActionButton>
@@ -48,13 +51,18 @@ interface ActionButtonProps {
   active: boolean,
   children: any,
   onClick: (event: any) => void
+  notificationNum: number | null,
 }
-const ActionButton = ({ active, children, onClick }: ActionButtonProps) => {
+const ActionButton = ({ active, children, onClick, notificationNum = null }: ActionButtonProps) => {
   return <div 
-    className={`flex cursor-pointer h-8 justify-center items-center p-4 rounded-t-lg ${active ? 'bg-main-200' : 'bg-main-400'}`}
+    className={`flex relative cursor-pointer h-8 justify-center items-center p-4 rounded-t-lg ${active ? 'bg-secondary-100' : 'bg-secondary-200'}`}
     onClick={onClick}
   >
     {children}
+    {notificationNum && 
+    <div className='flex absolute -top-1 -right-1 bg-secondary-100 rounded-xl w-5 h-5 justify-center items-center font-bold text-sm'>
+      {notificationNum}
+    </div>}
   </div>;
 };
 interface ActiveTabProps {
