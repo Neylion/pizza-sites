@@ -13,7 +13,7 @@ const MainPage = () => {
     <div className="flex flex-col h-full w-full bg-main-800 overflow-scroll">
       <Hero setSearchQuery={setSearchQuery} searchQuery={searchQuery} searchEnabled={activeTab.searchEnabled} />
       <NavBar activeTab={activeTab} setActiveTab={setActiveTab} />
-      <div className="flex flex-col h-full border-t-2 items-center">
+      <div className="flex flex-col h-full items-center">
         <ActiveTab tab={activeTab} searchQuery={searchQuery} />
       </div>
     </div>
@@ -26,7 +26,7 @@ interface NavBarProps {
 }
 const NavBar = ({ activeTab, setActiveTab }: NavBarProps) => {
   return (
-    <div className="flex relative justify-center">
+    <div className="flex relative justify-center border-b-2">
       <div className="absolute bottom-0 mx-auto flex gap-1">
         {Object.values(tabs).map((tab, index) => {
           return (
