@@ -21,9 +21,22 @@ const MapComponent = ({ center, zoom, className }: MapComponentProps) => {
 
   useEffect(() => {
     if (!ref.current) return;
-    new window.google.maps.Map(ref.current, {
+    const map = new window.google.maps.Map(ref.current, {
+      styles: [{ featureType: 'poi', elementType: 'labels', stylers: [{ visibility: 'off' }] }],
       center,
       zoom,
+    });
+
+    new google.maps.Marker({
+      position: center,
+      icon: {
+        url: 'https://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png&scale=1',
+      },
+      map,
+      label: {
+        text: 'Mois\' Pizzeria', 
+        className: 'mb-20 font-bold bg-secondary-200 bg-opacity-60 rounded-lg p-1',
+      },
     });
   });
 
