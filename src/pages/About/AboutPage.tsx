@@ -3,8 +3,11 @@ const AboutPage = () => {
     <div className="flex flex-col w-full h-full m-auto items-center">
       <div className="flex flex-col text-white m-auto items-center text-center mt-8 w-10/12">
         <h1 className="text-4xl">
-          ZaZa Kök & Bar
+          Mois Kök & Bar
         </h1> 
+        <p className="text-2xl mt-6 font-bold">
+          Disclaimer: This website is just a playground. Nothing here is real. We recommend <a className="text-blue-400" href="https://zazapizzeria.se/">Zaza Pizzeria</a> for real pizzas.
+        </p>
         <p className="text-2xl my-6">
           Vi är en mysig kvarterskrog i idylliska Stureby söder om söder. Vi har funnits här i många år med olika ägarbyten. Vid detta laget är vi närmast en institution i Stureby. Vi serverar ett brett urval av olika maträtter, allt ifrån pizza till barmat och À la carte.
         </p>
