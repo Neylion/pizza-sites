@@ -14,7 +14,7 @@ const Hero = ({ setSearchQuery, searchEnabled, searchQuery }: HeroProps) => {
       <div className="flex-1 flex flex-col items-center justify-center h-full w-full bg-black/[.5]">
         <div className="flex-1 flex flex-col items-center justify-center h-full w-full">
           <span className="text-white my-2 md:my-8 text-xl md:text-4xl font-bold">
-            Mois' Pizzeria
+            HELLO WORLD
           </span>
           <div className="w-10/12 md:w-8/12">
             <Search setSearchQuery={setSearchQuery} searchEnabled={searchEnabled} searchQuery={searchQuery}/>
