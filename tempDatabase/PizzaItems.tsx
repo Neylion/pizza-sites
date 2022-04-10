@@ -27,6 +27,6 @@ const pizzaProps = [
 ];
 
 export const pizzas = pizzaProps.map((pizza) => {
-  const image = `/tempDatabase/pizzaImages/${pizza.number}.jpeg`;
-  return { image, ...pizza };
+  const image = new URL(`/tempDatabase/pizzaImages/${pizza.number}.jpeg`, import.meta.url);
+  return { image: image.href, ...pizza };
 });
