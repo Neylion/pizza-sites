@@ -1,8 +1,10 @@
 export interface IPizza {
+  id: string,
   number: number,
   name: string,
   ingredients: string[],
   price: number,
+  image: string,
 }
 
 export interface ICartItem {
