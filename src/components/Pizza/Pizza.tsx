@@ -1,7 +1,7 @@
-import { IPizza } from '../../../lib/types';
+import { IMenuItem } from '../../../lib/types';
 import CartModal from '../CartModal/CartModal';
 
-interface Props extends IPizza {
+interface Props extends IMenuItem {
   count: number,
   updateCartEntry: (newCount: number) => void,
   image: string,

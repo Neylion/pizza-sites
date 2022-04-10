@@ -1,7 +1,7 @@
 import Pizza from '../../components/Pizza/Pizza';
 import { pizzas as pizzaValues } from '../../../tempDatabase/PizzaItems';
 import { useCartContext } from '../../contexts/CartContext';
-import { ICart, IPizza } from '../../../lib/types';
+import { ICart, IMenuItem } from '../../../lib/types';
 
 interface PizzasProps {
   searchQuery: string | null,
@@ -25,7 +25,7 @@ const Pizzas = ({ searchQuery, cartMode = false }: PizzasProps) => {
   );
 };
 
-const getPizzasMatchingFilter = (pizzas: IPizza[], cartMode = false, cart: ICart, searchQuery: string | null) => {
+const getPizzasMatchingFilter = (pizzas: IMenuItem[], cartMode = false, cart: ICart, searchQuery: string | null) => {
   return pizzas.filter(({ id, number, name, ingredients }) => {
     if (cartMode && !cart.items[id]) return false;
     if (!searchQuery) return true;

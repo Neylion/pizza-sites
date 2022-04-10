@@ -1,4 +1,4 @@
-export interface IPizza {
+export interface IMenuItem {
   id: string,
   number: number,
   name: string,
@@ -7,12 +7,7 @@ export interface IPizza {
   image: string,
 }
 
-export interface ICartItem {
-  id: string,
-  name: string,
-  price: number,
-}
-export interface ICartItemWithCount extends ICartItem {
+export interface ICartItem extends IMenuItem {
   totalPrice: number
   count: number
 }
@@ -21,6 +16,6 @@ export interface ICart {
   totalCount: number,
   totalPrice: number,
   items: {
-    [itemId: string]: ICartItemWithCount
+    [itemId: string]: ICartItem
   }
 }

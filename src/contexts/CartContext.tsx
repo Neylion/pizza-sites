@@ -1,9 +1,9 @@
 import React from 'react';
-import { ICart, ICartItem, ICartItemWithCount } from '../../lib/types';
+import { ICart, IMenuItem, ICartItem } from '../../lib/types';
 
 export interface ICartContextValue { 
   cart: ICart;
-  setCartItems: (items: ICartItemWithCount[]) => void;
+  setCartItems: (items: ICartItem[]) => void;
 }
 
 export const CartContext = React.createContext<ICartContextValue | null>(null);
@@ -16,7 +16,7 @@ export const CartProvider = ({ children }: { children: JSX.Element }) => {
   const storedCart = localStorage.getItem('cart');
   const [cart, setCart] = React.useState<ICart>(storedCart ? JSON.parse(storedCart) : defaultCart);
 
-  const setCartItems = (items: ICartItemWithCount[]) => {
+  const setCartItems = (items: ICartItem[]) => {
     const newCart: ICart = {
       totalCount: 0,
       totalPrice: 0,
@@ -44,17 +44,17 @@ export const useCartContext = () => {
   }
   const { cart, setCartItems } = context;
   
-  const addOrUpdateCartItem = (item: ICartItem, count: number) => {
+  const addOrUpdateCartItem = (item: IMenuItem, count: number) => {
     cart.items[item.id] = { ...item, count, totalPrice: item.price * count };
     setCartItems([...Object.values(cart.items)]);
   };
 
-  const addOneOfCartItem = (item: ICartItem) => {
+  const addOneOfCartItem = (item: IMenuItem) => {
     const prevCount = cart.items[item.id]?.count || 0;
     addOrUpdateCartItem(item, prevCount + 1);
   };
 
-  const removeOneOfCartItem = (item: ICartItem) => {
+  const removeOneOfCartItem = (item: IMenuItem) => {
     const prevCount = cart.items[item.id]?.count || 0;
     if (prevCount <= 1) {
       removeCartItem(item);
@@ -63,7 +63,7 @@ export const useCartContext = () => {
     }
   };
 
-  const removeCartItem = (item: ICartItem) => {
+  const removeCartItem = (item: IMenuItem) => {
     delete cart.items[item.id];
     setCartItems(Object.values(cart.items));
   };
