@@ -13,7 +13,8 @@ export const CartProvider = ({ children }: { children: JSX.Element }) => {
     totalPrice: 0,
     items: {},
   };
-  const [cart, setCart] = React.useState<ICart>(defaultCart);
+  const storedCart = localStorage.getItem('cart');
+  const [cart, setCart] = React.useState<ICart>(storedCart ? JSON.parse(storedCart) : defaultCart);
 
   const setCartItems = (items: ICartItemWithCount[]) => {
     const newCart: ICart = {
@@ -27,6 +28,7 @@ export const CartProvider = ({ children }: { children: JSX.Element }) => {
       newCart.totalCount += item.count;
       newCart.totalPrice += item.totalPrice;
     });
+    localStorage.setItem('cart', JSON.stringify(newCart));
     setCart(newCart);
   };
 
