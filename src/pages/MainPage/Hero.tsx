@@ -56,7 +56,7 @@ const Search = ({ setSearchQuery, searchEnabled, searchQuery }: SearchProps) => 
         type="text"
         value={searchQuery || ''}
         disabled={!searchEnabled}
-        placeholder='Search...'
+        placeholder="Search..."
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       <FontAwesomeIcon icon={faClose} className="mx-2 md:mx-6 text-main-700" onClick={handleSearchClear}/>

@@ -21,7 +21,8 @@
     "@typescript-eslint/comma-dangle": ["error", "always-multiline"],
     "array-bracket-spacing": ["error", "never"],
     "object-curly-spacing": ["error", "always", { "objectsInObjects": true }],
-    "prefer-template": "error"
+    "prefer-template": "error",
+    "jsx-quotes": ["error", "prefer-double"]
   },
   "globals": {
     "google": "readonly",

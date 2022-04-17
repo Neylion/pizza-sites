@@ -16,7 +16,7 @@ const Pizza = ({ image, number, name, ingredients, price, count, updateCartEntry
           <div className="mb-4">{price}:-</div>
           <CartModal count={count} updateCartEntry={updateCartEntry} />
         </div>
-        <div className='rounded-full w-[60%] h-full bg-cover shadow-inner-1' style={{ backgroundImage: `url(${image}), url('images/temp-hero.jpeg')` }}></div>
+        <div className="rounded-full w-[60%] h-full bg-cover shadow-inner-1" style={{ backgroundImage: `url(${image}), url('images/temp-hero.jpeg')` }}></div>
       </div>
     </div>
   );

@@ -60,7 +60,7 @@ const ActionButton = ({ active, children, onClick, notificationNum = null }: Act
   >
     {children}
     {notificationNum && 
-    <div className='flex absolute -top-1 -right-1 bg-secondary-100 rounded-xl w-5 h-5 justify-center items-center font-bold text-sm'>
+    <div className="flex absolute -top-1 -right-1 bg-secondary-100 rounded-xl w-5 h-5 justify-center items-center font-bold text-sm">
       {notificationNum}
     </div>}
   </div>;
