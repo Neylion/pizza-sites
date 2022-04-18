@@ -18,10 +18,10 @@ const CartModal = ({ count, updateCartEntry }: CartModalProps) => {
   };
 
   return (
-    <div className="flex mr-auto bg-secondary-200 rounded-md">
-      <div className="flex-1 flex flex-col p-2 justify-center select-none cursor-pointer" onClick={() => updateCartEntry(count-1)}>{' - '}</div>
-      <input type="number" placeholder="0" className="flex-1 w-8 text-center" value={inputVal} onChange={(e) => handleInputChange(e.target.value)} onBlur={() => updateCartEntry(parseInt(inputVal.toString()) || 0)} />
-      <div className="flex-1 flex flex-col p-2 justify-center select-none cursor-pointer" onClick={() => updateCartEntry(count+1)}>{' + '}</div>
+    <div className="inline-flex mr-auto bg-secondary-200 rounded-md">
+      <div className="flex-1 flex flex-col px-2 py-1 justify-center select-none cursor-pointer" onClick={() => updateCartEntry(count-1)}>{'-'}</div>
+      <input type="number" placeholder="0" className="flex-1 w-7 text-center" value={inputVal} onChange={(e) => handleInputChange(e.target.value)} onBlur={() => updateCartEntry(parseInt(inputVal.toString()) || 0)} />
+      <div className="flex-1 flex flex-col px-2 py-1 justify-center select-none cursor-pointer" onClick={() => updateCartEntry(count+1)}>{'+'}</div>
     </div>
   );
 };
