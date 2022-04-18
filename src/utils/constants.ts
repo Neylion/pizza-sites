@@ -7,22 +7,22 @@ export interface ITab {
 export const tabs = {
   menu: {
     id: 'menu',
-    label: 'Meny',
+    label: 'Menu',
     searchEnabled: true,
   },
   cart: {
     id: 'cart',
-    label: 'Kundvagn',
+    label: 'Cart',
     searchEnabled: false,
   },
   map: {
     id: 'map',
-    label: 'Hitta hit',
+    label: 'Find us',
     searchEnabled: false,
   },
   about: {
     id: 'about',
-    label: 'Om oss',
+    label: 'About',
     searchEnabled: false,
   },
 };
