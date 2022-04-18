@@ -3,12 +3,11 @@ const colors = require('tailwindcss/colors');
 module.exports = {
   content: ['./src/**/*.{html,tsx}'],
   theme: {
-    colors: {
-      ...colors,
-      main: colors.gray,
-      secondary: colors.amber,
-    },
     extend: {
+      colors: {
+        main: colors.gray,
+        secondary: colors.amber,
+      },
       boxShadow: {
         'inner-1': 'inset 7px 7px 20px 0px #000000',
       },
