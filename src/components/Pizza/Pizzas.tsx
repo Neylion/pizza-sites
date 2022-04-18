@@ -14,13 +14,11 @@ const Pizzas = ({ searchQuery, cartMode = false }: PizzasProps) => {
 
   return (
     <>
-      <div className="inline-grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[0.2rem] mx-auto py-4 w-11/12 md:w-10/12">
-        {pizzasMatchingQuery.map((pizza, index) => {
-          const cartCount = cart.items[pizza.id]?.count || 0;
-          return <MenuItem {...pizza} key={index} count={cartCount} updateCartEntry={(count: number) => addOrUpdateCartItem(pizza, count)} />;
-        })
-        }
-      </div>
+      {pizzasMatchingQuery.map((pizza, index) => {
+        const cartCount = cart.items[pizza.id]?.count || 0;
+        return <MenuItem {...pizza} key={index} count={cartCount} updateCartEntry={(count: number) => addOrUpdateCartItem(pizza, count)} />;
+      })
+      }
     </>
   );
 };

@@ -80,7 +80,10 @@ const ActiveTab = ({ tab, searchQuery }: ActiveTabProps) => {
       return <CartPage />;
     case tabs.menu.id: 
     default: 
-      return <Pizzas searchQuery={searchQuery} />;
+      return ( 
+        <div className="inline-grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[0.2rem] mx-auto py-4 w-11/12 md:w-10/12">
+          <Pizzas searchQuery={searchQuery} />;
+        </div>);
   }
 };
 

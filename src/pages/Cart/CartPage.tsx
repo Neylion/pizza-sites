@@ -3,10 +3,16 @@ import { useCartContext } from '../../contexts/CartContext';
 
 const CartPage = () => {
   return (
-    <>
-      <CartSummary />
-      <Pizzas searchQuery={null} cartMode />
-    </>
+    <div className="inline-grid grid-cols-1 xl:grid-cols-3 mx-auto py-4 w-11/12 md:w-10/12">
+      <div className="col-span-1 w-full pb-1 xl:pr-1">
+        <CartSummary />
+      </div>
+      <div className="col-span-2 w-full">
+        <div className="inline-grid grid-cols-1 md:grid-cols-2 gap-[0.2rem] mx-auto w-full">
+          <Pizzas searchQuery={null} cartMode />
+        </div>
+      </div>
+    </div>
   );
 };
 
