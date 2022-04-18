@@ -8,6 +8,9 @@ module.exports = {
         main: colors.gray,
         secondary: colors.amber,
       },
+      fontSize: {
+        xxs: ['0.5rem'],
+      },
       boxShadow: {
         'inner-1': 'inset 7px 7px 20px 0px #000000',
       },
