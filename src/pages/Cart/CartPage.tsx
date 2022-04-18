@@ -1,3 +1,4 @@
+import CartModal from '../../components/CartModal/CartModal';
 import Pizzas from '../../components/Pizza/Pizzas';
 import { useCartContext } from '../../contexts/CartContext';
 
@@ -17,13 +18,32 @@ const CartPage = () => {
 };
 
 const CartSummary = () => {
-  const { cart } = useCartContext();
+  const { cart, addOrUpdateCartItem } = useCartContext();
   return (
-    <div className="my-4">
-      <div className="flex flex-col text-white justify-center text-center my-2">{cart.totalCount} - {cart.totalPrice}</div>
-      {Object.values(cart.items).map((item, index) => (
-        <div key={`${index}-${item.id}`} className="flex flex-col text-white justify-center text-center my-2">{item.count} - {item.name}</div>
-      ))}
+    <div className="bg-secondary-100 h-full w-full pb-4">
+      <p className="flex flex-col text-center p-4 border-b-2">Unfortunately we do not take online orders at this time, please phone in your order! Tel: 08-123 12 12</p>
+      <table className="mx-auto border-b-2 text-center" style={{ borderSpacing: '1rem 1rem', borderCollapse: 'separate' }}>
+        <tr className="text-xs">
+          <th>#</th>
+          <th>Name</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+        </tr>
+        {Object.values(cart.items).map((item, index) => (
+          <tr key={`${index}-${item.id}`}>
+            <td>{item.number}</td>
+            <td>{item.name}</td>
+            <td>{item.price}</td>
+            <td>
+              <CartModal count={item.count} updateCartEntry={(count: number) => addOrUpdateCartItem(item, count)} />
+            </td>
+            <td>{item.totalPrice}</td>
+          </tr>
+        ))}
+      </table>
+      <h2 className="flex flex-col text-center font-bold pt-4 border-t-2">Total</h2>
+      <div className="flex flex-col justify-center text-center">{cart.totalCount} items - {cart.totalPrice}:-</div>
     </div>
   );
 };
