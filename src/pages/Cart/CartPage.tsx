@@ -1,6 +1,7 @@
 import CartModal from '../../components/CartModal/CartModal';
 import Pizzas from '../../components/Pizza/Pizzas';
 import { useCartContext } from '../../contexts/CartContext';
+import brandData from '../../../tempDatabase/brandData';
 
 const CartPage = () => {
   return (
@@ -21,7 +22,7 @@ const CartSummary = () => {
   const { cart, addOrUpdateCartItem } = useCartContext();
   return (
     <div className="bg-secondary-100 h-full w-full pb-4">
-      <p className="flex flex-col text-center p-4 border-b-2">Unfortunately we do not take online orders at this time, please phone in your order! Tel: 08-123 12 12</p>
+      <p className="flex flex-col text-center p-4 border-b-2">Unfortunately we do not take online orders at this time, please phone in your order! Tel: {brandData.phone}</p>
       <table className="mx-auto border-b-2 text-center" style={{ borderSpacing: '1rem 1rem', borderCollapse: 'separate' }}>
         <tr className="text-xs">
           <th>#</th>

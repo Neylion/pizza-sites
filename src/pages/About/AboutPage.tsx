@@ -1,9 +1,11 @@
+import brandData from '../../../tempDatabase/brandData';
+
 const AboutPage = () => {
   return (
     <div className="flex flex-col w-full h-full m-auto items-center">
       <div className="flex flex-col text-white m-auto items-center text-center mt-8 w-10/12">
         <h1 className="text-4xl">
-          Mois Kök & Bar
+          {brandData.name}
         </h1> 
         <p className="text-2xl mt-6 font-bold">
           Disclaimer: This website is just a playground. Nothing here is real. We recommend <a className="text-blue-400" href="https://zazapizzeria.se/">Zaza Pizzeria</a> for real pizzas.

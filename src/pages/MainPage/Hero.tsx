@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faClose } from '@fortawesome/free-solid-svg-icons';
 import { useRef } from 'react';
+import brandData from '../../../tempDatabase/brandData';
+
 type SetSearchQueryCallback = (searchQuery: string | null) => void;
 
 interface HeroProps {
@@ -14,13 +16,13 @@ const Hero = ({ setSearchQuery, searchEnabled, searchQuery }: HeroProps) => {
       <div className="flex-1 flex flex-col items-center justify-center h-full w-full bg-black/[.5]">
         <div className="flex-1 flex flex-col items-center justify-center h-full w-full">
           <span className="text-white my-2 md:my-8 text-xl md:text-4xl font-bold">
-            Mois' Pizzeria
+            {brandData.name}
           </span>
           <div className="w-10/12 md:w-8/12">
             <Search setSearchQuery={setSearchQuery} searchEnabled={searchEnabled} searchQuery={searchQuery}/>
           </div>
           <span className="text-white mt-2 md:mt-4 text-l md:text-xl mb-10">
-            Tel: 08-123 12 12
+            Tel: {brandData.phone}
           </span>
         </div>
       </div>

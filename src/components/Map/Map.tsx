@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
+import brandData from '../../../tempDatabase/brandData';
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -34,7 +35,7 @@ const MapComponent = ({ center, zoom, className }: MapComponentProps) => {
       },
       map,
       label: {
-        text: 'Mois\' Pizzeria', 
+        text: brandData.name, 
         className: 'mb-20 font-bold bg-secondary-200 bg-opacity-60 rounded-lg p-1',
       },
     });
