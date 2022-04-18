@@ -6,7 +6,7 @@ interface Props extends IMenuItem {
   updateCartEntry: (newCount: number) => void,
   image: string,
 }
-const Pizza = ({ image, number, name, ingredients, price, count, updateCartEntry }: Props) => {
+const MenuItem = ({ image, number, name, ingredients, price, count, updateCartEntry }: Props) => {
   return (
     <div className="flex min-h-48 rounded-xl min-w-[100%] lg:max-w-[50%] lg:min-w-[400px]" style={{ flex: '40%' }}>
       <div className="flex-1 bg-secondary-100 flex justify-center rounded-lg p-4">
@@ -22,4 +22,4 @@ const Pizza = ({ image, number, name, ingredients, price, count, updateCartEntry
   );
 };
 
-export default Pizza;
+export default MenuItem;

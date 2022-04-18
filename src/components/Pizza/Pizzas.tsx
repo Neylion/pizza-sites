@@ -1,7 +1,7 @@
-import Pizza from '../../components/Pizza/Pizza';
 import { pizzas as pizzaValues } from '../../../tempDatabase/PizzaItems';
 import { useCartContext } from '../../contexts/CartContext';
 import { ICart, IMenuItem } from '../../../lib/types';
+import MenuItem from '../MenuItem/MenuItem';
 
 interface PizzasProps {
   searchQuery: string | null,
@@ -17,7 +17,7 @@ const Pizzas = ({ searchQuery, cartMode = false }: PizzasProps) => {
       <div className="flex gap-4 flex-wrap mx-auto py-4 w-11/12 md:w-10/12">
         {pizzasMatchingQuery.map((pizza, index) => {
           const cartCount = cart.items[pizza.id]?.count || 0;
-          return <Pizza {...pizza} key={index} count={cartCount} updateCartEntry={(count: number) => addOrUpdateCartItem(pizza, count)} />;
+          return <MenuItem {...pizza} key={index} count={cartCount} updateCartEntry={(count: number) => addOrUpdateCartItem(pizza, count)} />;
         })
         }
       </div>
